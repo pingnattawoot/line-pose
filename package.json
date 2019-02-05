@@ -9,6 +9,8 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.120",
+    "lodash": "^4.17.11",
     "vue": "^2.5.22",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
@@ -43,6 +45,8 @@
     },
     "extends": [
       "plugin:vue/essential",
+      "plugin:prettier/recommended",
+      "eslint:recommended",
       "@vue/prettier",
       "@vue/typescript"
     ],
