@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://api.lbbs.line-beta.me',
+  baseURL: 'https://api.jsonbin.io',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
