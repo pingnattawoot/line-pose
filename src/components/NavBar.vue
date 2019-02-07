@@ -19,7 +19,7 @@ export default {}
 
 .nav > .brand {
   color: #fffbf4;
-  font-size: 40px;
+  font-size: 2em;
   font-weight: 700;
   line-height: 40px;
   text-decoration: none;

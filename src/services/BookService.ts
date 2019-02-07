@@ -1,7 +1,14 @@
 import axios from 'axios'
 
+const mode = process.env.NODE_ENV
+let baseURL = 'https://api.jsonbin.io'
+if (mode === 'development') {
+  // json-server (start by `yarn json-server`)
+  baseURL = 'http://localhost:3000'
+}
+
 const apiClient = axios.create({
-  baseURL: 'https://api.jsonbin.io',
+  baseURL,
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -11,5 +18,8 @@ const apiClient = axios.create({
 })
 
 export default {
-  getBooks: () => apiClient.get('b/5c52a1be15735a25423d3540'),
+  getBooks: () =>
+    apiClient.get(
+      mode === 'development' ? '/b' : '/b/5c52a1be15735a25423d3540'
+    ),
 }

@@ -22,6 +22,10 @@ export default {
   src: url('assets/fonts/ThaiSansNeue-Regular.ttf') format('truetype');
 }
 
+body {
+  font-size: 20px;
+}
+
 #app {
   // font-family: 'Sukhumvit Set', 'Thai Sans Neue', sans-serif;
   font-family: 'Thai Sans Neue', sans-serif;
