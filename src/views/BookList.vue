@@ -10,9 +10,11 @@
         <BookCard :book="book"></BookCard>
       </li>
     </ul>
-    <BaseModal v-if="showBookModal" @close="showBookModal = false">
-      <BookCard v-if="selectedBook" slot="body" :book="selectedBook" />
-    </BaseModal>
+    <AddToCartModal
+      v-if="showBookModal"
+      :book="selectedBook"
+      @close="showBookModal = false"
+    />
   </div>
 </template>
 
@@ -20,11 +22,13 @@
 import { mapActions, mapState } from 'vuex'
 import { ActionType } from '@/store/modules/book'
 import BookCard from '@/components/BookCard.vue'
+import AddToCartModal from '@/components/AddToCartModal.vue'
 import { createArrayFilterFunction } from '@/utils'
 
 export default {
   components: {
     BookCard,
+    AddToCartModal,
   },
   mounted() {
     this.fetchBooks()
