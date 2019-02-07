@@ -2,10 +2,17 @@
   <div class="book-list-container">
     <BaseInput v-model="seachingText" placeholder="Search books" />
     <ul class="book-list">
-      <li v-for="book in filteredBooks" :key="book.id">
+      <li
+        v-for="book in filteredBooks"
+        :key="book.id"
+        @click="selectBook(book, $event)"
+      >
         <BookCard :book="book"></BookCard>
       </li>
     </ul>
+    <BaseModal v-if="showBookModal" @close="showBookModal = false">
+      <BookCard v-if="selectedBook" slot="body" :book="selectedBook" />
+    </BaseModal>
   </div>
 </template>
 
@@ -25,16 +32,27 @@ export default {
   data() {
     return {
       seachingText: '',
+      currentSelectedBookId: 0,
+      showBookModal: false,
     }
   },
-  methods: mapActions('book', [ActionType.fetchBooks]),
+  methods: {
+    ...mapActions('book', [ActionType.fetchBooks]),
+    selectBook(book) {
+      this.currentSelectedBookId = book.id
+      this.showBookModal = true
+    },
+  },
   computed: {
+    ...mapState('book', ['books']),
     filteredBooks() {
       const queryableFields = ['title', 'price']
       const filterBooks = createArrayFilterFunction(queryableFields)
       return filterBooks(this.books, this.seachingText.trim())
     },
-    ...mapState('book', ['books']),
+    selectedBook() {
+      return this.books.find(b => b.id === this.currentSelectedBookId)
+    },
   },
 }
 </script>

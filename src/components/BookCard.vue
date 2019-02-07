@@ -19,6 +19,7 @@ export default {
 
 <style scoped lang="stylus">
 .book-card {
+  cursor: pointer;
   text-align: center;
 
   &__title {
