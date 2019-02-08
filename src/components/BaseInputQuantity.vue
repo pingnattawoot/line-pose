@@ -34,7 +34,7 @@ export default {
   },
   data() {
     return {
-      min: 0,
+      min: 1,
       max: 100,
     }
   },
@@ -65,6 +65,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     width: 28px;
     height: 28px;
     border: 1px solid #ccc;
+    cursor: pointer;
 
     &:disabled {
       background-color: #ddd;

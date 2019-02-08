@@ -1,6 +1,6 @@
 import BookService from '@/services/BookService'
 
-type Book = {
+export type Book = {
   id: string
   cover: string
   title: string

@@ -1,6 +1,7 @@
 import _ from 'lodash'
+import { getTotalPrice } from '@/utils'
 
-type CartItem = {
+export type CartItem = {
   bookId: string
   quantity: number
 }
@@ -44,7 +45,7 @@ const mutations = {
 
 export const ActionType = {
   addToCart: 'addToCart',
-  changeQuantityInCart: 'changeQuantityInCart',
+  setQuantityInCart: 'setQuantityInCart',
   removeItem: 'removeItem',
   emptyCart: 'emptyCart',
 }
@@ -64,7 +65,7 @@ const actions = {
       commit(MutationType.ADD_NEW_BOOK_TO_CART, newItem)
     }
   },
-  [ActionType.changeQuantityInCart]: ({ commit }, itemToChange: CartItem) => {
+  [ActionType.setQuantityInCart]: ({ commit }, itemToChange: CartItem) => {
     commit(MutationType.SET_QUANTITY_OF_BOOK, itemToChange)
   },
   [ActionType.removeItem]: ({ commit }, bookId: string) => {
@@ -77,11 +78,17 @@ const actions = {
 
 export const GetterType = {
   allItemQuantity: 'allItemQuantity',
+  totalPrice: 'totalPrice',
 }
 
 const getters = {
   [GetterType.allItemQuantity]: (state: State) =>
     _.sumBy(state.cart, 'quantity'),
+  [GetterType.totalPrice]: (state: State, _, rootState) => {
+    const books = rootState.book.books
+    const items = state.cart
+    return getTotalPrice(books, items)
+  },
 }
 
 export default {

@@ -1,16 +1,17 @@
 <template>
   <BaseModal class="add-to-card-modal" @close="$emit('close')">
-    <h3 slot="header">Add to cart</h3>
+    <div slot="header" />
     <div slot="body" class="add-to-card-modal__body">
       <div class="cover-image-container">
         <img :src="book.cover" />
       </div>
 
       <div class="detail-container">
-        <div><label>Title:</label> {{ book.title }}</div>
-        <div><label>Price:</label> {{ book.price }} THB.</div>
-        <div>
-          <label>Quantity:</label>
+        <div class="product-detail">
+          <div class="title">{{ book.title }}</div>
+          <div class="price">{{ priceText }}</div>
+        </div>
+        <div class="quantity-input-container">
           <BaseInputQuantity
             @increase="quantity += 1"
             v-model="quantity"
@@ -35,6 +36,7 @@
 <script lang="ts">
 import { mapActions } from 'vuex'
 import { ActionType } from '@/store/modules/cart'
+import { getThaiBahtText } from '@/utils'
 
 export default {
   props: {
@@ -47,6 +49,11 @@ export default {
     return {
       quantity: 1,
     }
+  },
+  computed: {
+    priceText() {
+      return getThaiBahtText(this.book.price)
+    },
   },
   methods: {
     ...mapActions('cart', [ActionType.addToCart]),
@@ -86,6 +93,22 @@ export default {
       padding: 10px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+
+      .title {
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+
+      .price {
+        font-size: 1.5em;
+        color: #00b900;
+      }
+
+      .quantity-input-container {
+        align-self: center;
+        bottom: 0;
+      }
     }
   }
 

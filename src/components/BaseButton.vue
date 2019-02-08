@@ -16,6 +16,7 @@ export default {
 
 <style lang="stylus" scoped>
 .button {
+  color: #444;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -23,7 +24,8 @@ export default {
   height: 36px;
   padding: 0 20px;
   background: transparent;
-  border: 2px solid saddlebrown;
+  box-shadow: 0 0 0 1px #00b900;
+  border: none;
   border-radius: 4px;
   text-align: center;
   font-weight: 600;
@@ -35,16 +37,16 @@ export default {
   }
 
   &.primary {
-    background: saddlebrown;
+    background: #00b900;
     color: #fff;
   }
 
   &.primary:active {
-    background: #5e2f0e;
+    background: #00a800;
   }
 
   &:active {
-    background: rgba(139, 69, 19, 0.2);
+    background: #ecffec;
   }
 }
 </style>
