@@ -16,6 +16,7 @@ export default {
 
 <style lang="stylus" scoped>
 .button {
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -28,6 +29,10 @@ export default {
   font-weight: 600;
   white-space: nowrap;
   transition: all 0.2s linear;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 
   &.primary {
     background: saddlebrown;

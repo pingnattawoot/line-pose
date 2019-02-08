@@ -45,7 +45,7 @@ const mutations = {
 export const ActionType = {
   addToCart: 'addToCart',
   changeQuantityInCart: 'changeQuantityInCart',
-  removeBook: 'removeBook',
+  removeItem: 'removeItem',
   emptyCart: 'emptyCart',
 }
 
@@ -67,7 +67,7 @@ const actions = {
   [ActionType.changeQuantityInCart]: ({ commit }, itemToChange: CartItem) => {
     commit(MutationType.SET_QUANTITY_OF_BOOK, itemToChange)
   },
-  [ActionType.removeBook]: ({ commit }, bookId: string) => {
+  [ActionType.removeItem]: ({ commit }, bookId: string) => {
     commit(MutationType.REMOVE_BOOK_FORM_CART, bookId)
   },
   [ActionType.emptyCart]: ({ commit }) => {

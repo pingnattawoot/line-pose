@@ -2,24 +2,27 @@
   <div>
     Cart Page ({{ allItemQuantity }} items)
     <ul>
-      <li v-for="book in cart" :key="book.id">
-        {{ book.bookId }} ({{ book.quantity }})
-        <button @click="removeBook(book.bookId)">delete</button>
+      <li v-for="item in cart" :key="item.id">
+        <CartItem :item="item" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from 'vuex'
-import { ActionType, GetterType } from '@/store/modules/cart'
+import { mapState, mapGetters } from 'vuex'
+
+import { GetterType } from '@/store/modules/cart'
+import CartItem from '@/components/CartItem.vue'
 
 export default {
+  components: {
+    CartItem,
+  },
   computed: {
     ...mapState('cart', ['cart']),
     ...mapGetters('cart', [GetterType.allItemQuantity]),
   },
-  methods: mapActions('cart', [ActionType.removeBook]),
 }
 </script>
 

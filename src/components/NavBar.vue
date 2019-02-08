@@ -4,13 +4,18 @@
       Little Brown Book Shop
     </router-link>
     <router-link :to="{ name: 'cart' }" class="brand">
-      [Cart]
+      [Cart ({{ allItemQuantity }})]
     </router-link>
   </div>
 </template>
 
 <script>
-export default {}
+import { mapGetters } from 'vuex'
+import { GetterType } from '@/store/modules/cart'
+
+export default {
+  computed: mapGetters('cart', [GetterType.allItemQuantity]),
+}
 </script>
 
 <style scoped>
