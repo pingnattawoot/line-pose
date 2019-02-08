@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { getTotalPrice } from '@/utils'
+import { getSubTotalPrice, getDiscountAmount } from '@/utils'
 
 export type CartItem = {
   bookId: string
@@ -78,16 +78,22 @@ const actions = {
 
 export const GetterType = {
   allItemQuantity: 'allItemQuantity',
-  totalPrice: 'totalPrice',
+  subTotalPrice: 'subTotalPrice',
+  discountAmount: 'discountAmount',
 }
 
 const getters = {
   [GetterType.allItemQuantity]: (state: State) =>
     _.sumBy(state.cart, 'quantity'),
-  [GetterType.totalPrice]: (state: State, _, rootState) => {
+  [GetterType.subTotalPrice]: (state: State, _, rootState) => {
     const books = rootState.book.books
     const items = state.cart
-    return getTotalPrice(books, items)
+    return getSubTotalPrice(books, items)
+  },
+  [GetterType.discountAmount]: (state: State, _, rootState) => {
+    const books = rootState.book.books
+    const items = state.cart
+    return getDiscountAmount(books, items)
   },
 }
 

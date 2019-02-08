@@ -1,6 +1,12 @@
 import createArrayFilterFunction from './createArrayFilterFunction'
-import getTotalPrice from './getTotalPrice'
+import getSubTotalPrice from './getSubTotalPrice'
+import getDiscountAmount from './getDiscountAmount'
 
 const getThaiBahtText = (n: number | string) => `฿${n.toLocaleString('en')}`
 
-export { createArrayFilterFunction, getThaiBahtText, getTotalPrice }
+export {
+  createArrayFilterFunction,
+  getThaiBahtText,
+  getSubTotalPrice,
+  getDiscountAmount,
+}

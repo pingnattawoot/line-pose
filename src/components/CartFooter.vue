@@ -2,7 +2,23 @@
   <div class="cart-footer">
     <div class="total-price-container">
       <div class="subtotal-text">Total price ({{ allItemQuantityText }}) :</div>
-      <div class="subtotal-amount">{{ totalPriceText }}</div>
+      <div v-if="discountAmount === 0">
+        <div class="net-amount">{{ netPriceText }}</div>
+      </div>
+      <div v-else class="with-discount">
+        <div class="subtotal-and-discount">
+          <div class="subtotal-amount">{{ subTotalPriceText }}</div>
+          <div class="operator minus">-</div>
+          <div class="discount-amount">
+            {{ discountAmountText }}
+          </div>
+          <div class="operator equal">=</div>
+          <div class="discount-description">
+            (Discount on Harry Potter book)
+          </div>
+        </div>
+        <div class="net-amount">{{ netPriceText }}</div>
+      </div>
     </div>
     <div class="button-container">
       <BaseButton class="primary">Check out</BaseButton>
@@ -17,14 +33,27 @@ import { getThaiBahtText } from '@/utils'
 
 export default {
   computed: {
-    ...mapGetters('cart', [GetterType.allItemQuantity, GetterType.totalPrice]),
+    ...mapGetters('cart', [
+      GetterType.allItemQuantity,
+      GetterType.subTotalPrice,
+      GetterType.discountAmount,
+    ]),
     allItemQuantityText() {
       return `${this.allItemQuantity} item${
         this.allItemQuantity > 1 ? 's' : ''
       }`
     },
-    totalPriceText() {
-      return getThaiBahtText(this.totalPrice)
+    subTotalPriceText() {
+      return getThaiBahtText(this.subTotalPrice)
+    },
+    discountAmountText() {
+      return getThaiBahtText(this.discountAmount)
+    },
+    netPrice() {
+      return this.subTotalPrice - this.discountAmount
+    },
+    netPriceText() {
+      return getThaiBahtText(this.netPrice)
     },
   },
 }
@@ -59,11 +88,50 @@ export default {
       font-weight: bold;
     }
 
-    .subtotal-amount {
-      font-size: 1.5em;
+    .net-amount {
+      font-size: 1.8em;
       font-weight: bold;
       color: #00b900;
       padding: 4px;
+    }
+
+    .with-discount {
+      display: flex;
+      align-items: center;
+
+      .subtotal-and-discount {
+        display: flex;
+        font-size: 1.2em;
+        font-weight: bold;
+
+        .subtotal-amount {
+          padding: 0 8px;
+        }
+
+        .discount-amount {
+          color: red;
+          padding: 0 8px;
+        }
+
+        .discount-description {
+          color: #777;
+          top: 15px;
+          font-size: 0.5em;
+          position: absolute;
+          height: 20px;
+          text-align: center;
+        }
+
+        .operator {
+          &.minus {
+            color: red;
+          }
+
+          &.equal {
+            color: #00b900;
+          }
+        }
+      }
     }
   }
 
