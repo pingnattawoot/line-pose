@@ -34,8 +34,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import { GetterType } from '@/store/modules/cart'
+import { ActionType } from '@/store/modules/cash'
 import { getThaiBahtText } from '@/utils'
 import { required } from 'vuelidate/lib/validators'
 
@@ -60,9 +61,11 @@ export default {
     },
   },
   methods: {
+    ...mapActions('cash', [ActionType.setCash]),
     goToPrintReceipt() {
       this.$v.$touch()
       if (!this.$v.$invalid) {
+        this.setCash(this.cashAmount)
         this.$router.push({ name: 'receipt' })
       }
     },
