@@ -17,6 +17,27 @@ export default {
 </script>
 
 <style lang="stylus">
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  text-align: center;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  text-align: center;
+}
+
+:-ms-input-placeholder {
+  text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 @font-face {
   font-family: 'Thai Sans Neue';
   src: url('assets/fonts/ThaiSansNeue-Regular.ttf') format('truetype');
@@ -32,6 +53,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+.errorMessage {
+  font-size: 0.8em;
+  color: red;
 }
 
 .table {

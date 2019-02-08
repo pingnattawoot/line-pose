@@ -80,6 +80,7 @@ export const GetterType = {
   allItemQuantity: 'allItemQuantity',
   subTotalPrice: 'subTotalPrice',
   discountAmount: 'discountAmount',
+  netPrice: 'netPrice',
 }
 
 const getters = {
@@ -94,6 +95,11 @@ const getters = {
     const books = rootState.book.books
     const items = state.cart
     return getDiscountAmount(books, items)
+  },
+  [GetterType.netPrice]: (_, getters) => {
+    return (
+      getters[GetterType.subTotalPrice] - getters[GetterType.discountAmount]
+    )
   },
 }
 

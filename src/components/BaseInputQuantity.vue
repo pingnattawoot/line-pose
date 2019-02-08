@@ -48,11 +48,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 .select-quantity {
   display: inline-flex;
   justify-content: center;

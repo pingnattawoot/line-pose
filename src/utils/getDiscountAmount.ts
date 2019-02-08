@@ -14,7 +14,7 @@ export default function getDiscountPrice(
   if (itemToDiscount.length > 1) {
     const subTotalOfItemToDiscount = itemToDiscount.reduce((acc, item) => {
       const book = books.find(book => book.id === item.bookId)
-      return acc + book.price
+      return acc + book.price * 1 // discount only unique Harry Potter book
     }, 0)
 
     switch (itemToDiscount.length) {

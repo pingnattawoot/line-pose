@@ -21,8 +21,14 @@
       </div>
     </div>
     <div class="button-container">
-      <BaseButton class="primary">Check out</BaseButton>
+      <BaseButton class="primary" @click="showCheckoutModal = true"
+        >Check out</BaseButton
+      >
     </div>
+    <BeforeCheckoutModal
+      v-if="showCheckoutModal"
+      @close="showCheckoutModal = false"
+    />
   </div>
 </template>
 
@@ -30,13 +36,23 @@
 import { mapGetters } from 'vuex'
 import { GetterType } from '@/store/modules/cart'
 import { getThaiBahtText } from '@/utils'
+import BeforeCheckoutModal from '@/components/BeforeCheckoutModal.vue'
 
 export default {
+  components: {
+    BeforeCheckoutModal,
+  },
+  data() {
+    return {
+      showCheckoutModal: false,
+    }
+  },
   computed: {
     ...mapGetters('cart', [
       GetterType.allItemQuantity,
       GetterType.subTotalPrice,
       GetterType.discountAmount,
+      GetterType.netPrice,
     ]),
     allItemQuantityText() {
       return `${this.allItemQuantity} item${
@@ -48,9 +64,6 @@ export default {
     },
     discountAmountText() {
       return getThaiBahtText(this.discountAmount)
-    },
-    netPrice() {
-      return this.subTotalPrice - this.discountAmount
     },
     netPriceText() {
       return getThaiBahtText(this.netPrice)
