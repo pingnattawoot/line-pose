@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="add-to-card-modal__footer" slot="footer">
-      <BaseButton @click="addToCart" buttonClass="primary"
+      <BaseButton @click="addItemToCart" buttonClass="primary"
         >Add to cart</BaseButton
       >
       <BaseButton @click="$emit('close')">Cancel</BaseButton>
@@ -37,6 +37,9 @@
 </template>
 
 <script lang="ts">
+import { mapActions } from 'vuex'
+import { ActionType } from '@/store/modules/cart'
+
 export default {
   props: {
     book: {
@@ -50,12 +53,16 @@ export default {
     }
   },
   methods: {
+    ...mapActions('cart', [ActionType.addToCart]),
+    addItemToCart() {
+      this.addToCart({ bookId: this.book.id, quantity: this.quantity })
+      this.$emit('close')
+    },
     addQuantity(num) {
       if (this.quantity + num > 0) {
         this.quantity += num
       }
     },
-    addToCart() {},
   },
 }
 </script>

@@ -5,7 +5,7 @@ type State = {
 }
 
 const MutationType = {
-  SET_BOOK: 'SET_BOOK',
+  SET_BOOKS: 'SET_BOOKS',
 }
 
 export const ActionType = {
@@ -17,7 +17,7 @@ const state: State = {
 }
 
 const mutations = {
-  [MutationType.SET_BOOK]: (state: State, books: object[]) => {
+  [MutationType.SET_BOOKS]: (state: State, books: object[]) => {
     state.books = books
   },
 }
@@ -26,7 +26,7 @@ const actions = {
   [ActionType.fetchBooks]: async ({ commit }) => {
     const response = await BookService.getBooks()
     if (response.data.books) {
-      commit(MutationType.SET_BOOK, response.data.books)
+      commit(MutationType.SET_BOOKS, response.data.books)
     }
   },
 }

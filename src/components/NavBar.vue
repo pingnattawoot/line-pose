@@ -3,6 +3,9 @@
     <router-link to="/" class="brand">
       Little Brown Book Shop
     </router-link>
+    <router-link :to="{ name: 'cart' }" class="brand">
+      [Cart]
+    </router-link>
   </div>
 </template>
 
