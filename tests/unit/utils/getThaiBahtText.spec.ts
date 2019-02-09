@@ -9,11 +9,11 @@ describe('[Util] Get Thai Baht Text :', () => {
   it('should render comma if value >= 1000', () => {
     const value = 1000
     const result = getThaiBahtText(value)
-    expect(result).toMatch(/\,/)
+    expect(result).toMatch(/,/)
   })
   it('should not render comma if value < 1000', () => {
     const value = 999
     const result = getThaiBahtText(value)
-    expect(result).not.toMatch(/\,/)
+    expect(result).not.toMatch(/,/)
   })
 })

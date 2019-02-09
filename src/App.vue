@@ -101,4 +101,24 @@ h2.header {
 .table-cell {
   display: table-cell;
 }
+
+.spinner-icon {
+  display: none;
+}
+
+#nprogress {
+  $np-bar-color = #9a6650;
+  border-top-color: $np-bar-color;
+  border-left-color: $np-bar-color;
+  box-shadow: 0 0 10px $np-bar-color, 0 0 5px $np-bar-color;
+
+  .bar {
+    background: $np-bar-color;
+    height: 3px;
+  }
+
+  .peg {
+    box-shadow: 0 0 10px $np-bar-color, 0 0 5px $np-bar-color;
+  }
+}
 </style>

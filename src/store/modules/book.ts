@@ -34,16 +34,21 @@ export const mutations = {
 }
 
 const actions = {
-  [ActionType.fetchBooks]: async ({ commit }) => {
-    const response = await BookService.getBooks()
-    if (response.data.books) {
-      const books = response.data.books.map(({ id, title, cover, price }) => ({
-        id,
-        title,
-        cover,
-        price: parseFloat(price),
-      }))
-      commit(MutationType.SET_BOOKS, books)
+  [ActionType.fetchBooks]: async ({ commit, state }) => {
+    // fetch only 1 time
+    if (state.books.length === 0) {
+      const response = await BookService.getBooks()
+      if (response.data.books) {
+        const books = response.data.books.map(
+          ({ id, title, cover, price }) => ({
+            id,
+            title,
+            cover,
+            price: parseFloat(price),
+          })
+        )
+        commit(MutationType.SET_BOOKS, books)
+      }
     }
   },
 }

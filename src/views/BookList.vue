@@ -27,8 +27,9 @@
 </template>
 
 <script lang="ts">
+import NProgress from 'nprogress'
 import { mapActions, mapState } from 'vuex'
-import { ActionType } from '@/store/modules/book'
+import store from '@/store/store'
 import BookCard from '@/components/BookCard.vue'
 import AddToCartModal from '@/components/AddToCartModal.vue'
 import { createArrayFilterFunction } from '@/utils'
@@ -40,9 +41,6 @@ export default {
     AddToCartModal,
     CartFloatingLink,
   },
-  mounted() {
-    this.fetchBooks()
-  },
   data() {
     return {
       seachingText: '',
@@ -51,7 +49,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions('book', [ActionType.fetchBooks]),
     selectBook(book) {
       this.currentSelectedBookId = book.id
       this.showBookModal = true
@@ -67,6 +64,18 @@ export default {
     selectedBook() {
       return this.books.find(b => b.id === this.currentSelectedBookId)
     },
+  },
+  async beforeRouteEnter(routeTo, routeFrom, next) {
+    NProgress.start()
+    try {
+      await store.dispatch('book/fetchBooks').then(() => {
+        NProgress.done()
+        next()
+      })
+    } catch (error) {
+      NProgress.done()
+      next({ name: 'network-issue' })
+    }
   },
 }
 </script>

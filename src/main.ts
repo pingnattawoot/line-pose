@@ -1,3 +1,5 @@
+import 'nprogress/nprogress.css'
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -12,6 +14,8 @@ import {
   faBook,
   faTrash,
   faTimesCircle,
+  faExclamationTriangle,
+  faWifi,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -32,7 +36,15 @@ requireComponent.keys().forEach(fileName => {
   Vue.component(componentName, componentConfig.default || componentConfig)
 })
 
-const Icons = [faCoffee, faShoppingCart, faBook, faTrash, faTimesCircle]
+const Icons = [
+  faCoffee,
+  faShoppingCart,
+  faBook,
+  faTrash,
+  faTimesCircle,
+  faExclamationTriangle,
+  faWifi,
+]
 Icons.forEach(icon => {
   library.add(icon)
 })
