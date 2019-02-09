@@ -78,6 +78,10 @@ describe('[Util] Get Discount Price :', () => {
         bookId: 'harry5',
         quantity: 20,
       },
+      {
+        bookId: 'not-harry',
+        quantity: 5,
+      },
     ]
     const result = getDiscountAmount(books, items)
     const expectedResult = 0

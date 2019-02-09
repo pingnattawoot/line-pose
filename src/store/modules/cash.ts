@@ -1,4 +1,4 @@
-type State = {
+export type State = {
   cash: number
 }
 
@@ -10,7 +10,7 @@ const state: State = {
   cash: 0,
 }
 
-const mutations = {
+export const mutations = {
   [MutationType.SET_CASH_AMOUNT]: (state: State, newAmount: number) => {
     state.cash = newAmount
   },

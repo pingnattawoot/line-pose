@@ -27,7 +27,7 @@ const state: State = {
   books: [],
 }
 
-const mutations = {
+export const mutations = {
   [MutationType.SET_BOOKS]: (state: State, books: Book[]) => {
     state.books = books
   },
