@@ -5,6 +5,9 @@ import store from './store/store'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 import Vuelidate from 'vuelidate'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.use(Vuelidate)
 
@@ -22,6 +25,13 @@ requireComponent.keys().forEach(fileName => {
 
   Vue.component(componentName, componentConfig.default || componentConfig)
 })
+
+const Icons = [faCoffee, faShoppingCart]
+Icons.forEach(icon => {
+  library.add(icon)
+})
+Vue.component('FontAwesomeIcon', FontAwesomeIcon)
+
 Vue.config.productionTip = false
 
 new Vue({

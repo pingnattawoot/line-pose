@@ -3,8 +3,8 @@
     <router-link to="/" class="brand">
       Little Brown Book Shop
     </router-link>
-    <router-link :to="{ name: 'cart' }" class="brand">
-      [Cart ({{ allItemQuantity }})]
+    <router-link :to="{ name: 'cart' }" class="cart">
+      <FontAwesomeIcon icon="shopping-cart" /> ({{ allItemQuantity }})
     </router-link>
   </div>
 </template>
@@ -18,18 +18,30 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
+$nav-text-color = #fffbf4;
+
 .nav {
   padding: 10px;
   height: 40px;
   background: #444444;
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-.nav > .brand {
-  color: #fffbf4;
-  font-size: 2em;
-  font-weight: 700;
-  line-height: 40px;
-  text-decoration: none;
+  > .brand {
+    font-size: 2em;
+    color: $nav-text-color;
+    font-weight: 700;
+    line-height: 40px;
+    text-decoration: none;
+  }
+
+  > .cart {
+    font-size: 1.5em;
+    color: $nav-text-color;
+    font-weight: 700;
+    text-decoration: none;
+  }
 }
 </style>
