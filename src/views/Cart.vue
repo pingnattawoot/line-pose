@@ -24,7 +24,6 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-
 import { GetterType } from '@/store/modules/cart'
 import CartItem from '@/components/CartItem.vue'
 import CartFooter from '@/components/CartFooter.vue'

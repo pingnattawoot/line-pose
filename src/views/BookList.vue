@@ -21,6 +21,7 @@
         :book="selectedBook"
         @close="showBookModal = false"
       />
+      <CartFloatingLink />
     </div>
   </div>
 </template>
@@ -31,11 +32,13 @@ import { ActionType } from '@/store/modules/book'
 import BookCard from '@/components/BookCard.vue'
 import AddToCartModal from '@/components/AddToCartModal.vue'
 import { createArrayFilterFunction } from '@/utils'
+import CartFloatingLink from '@/components/CartFloatingLink.vue'
 
 export default {
   components: {
     BookCard,
     AddToCartModal,
+    CartFloatingLink,
   },
   mounted() {
     this.fetchBooks()

@@ -53,7 +53,7 @@
       <div class="thank-you-and-go-back">
         <div class="thank-you-text bold">Thank you!</div>
         <router-link class="link" :to="{ name: 'home' }">
-          <BaseButton buttonClass="primary">Process Next Order</BaseButton>
+          <BaseButton buttonClass="primary">Next Order</BaseButton>
         </router-link>
       </div>
     </div>
@@ -64,7 +64,7 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 import { getThaiBahtText } from '@/utils'
-import { GetterType } from '@/store/modules/cart'
+import { GetterType, ActionType as CartActions } from '@/store/modules/cart'
 import { ActionType as CashActions } from '@/store/modules/cash'
 import ReceiptItem from '@/components/ReceiptItem.vue'
 import ReceiptEmptyState from '@/components/ReceiptEmptyState.vue'
@@ -90,9 +90,11 @@ export default {
   methods: {
     getThaiBahtText,
     ...mapActions('cash', [CashActions.setCash]),
+    ...mapActions('cart', [CartActions.emptyCart]),
   },
   beforeRouteLeave(to, from, next) {
     this.setCash(0)
+    this.emptyCart()
     next()
   },
 }
