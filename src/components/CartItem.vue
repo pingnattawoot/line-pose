@@ -123,7 +123,7 @@ export default {
       }
     }
 
-    >, button.remove-item {
+    >button.remove-item {
       display: inline-flex;
       border: none;
       background: transparent;
