@@ -2,14 +2,20 @@
   <BaseModal class="add-to-card-modal" @close="$emit('close')">
     <div slot="header" />
     <div slot="body" class="add-to-card-modal__body">
-      <div class="cover-image-container">
-        <img :src="book.cover" />
-      </div>
+      <div
+        class="cover-image-container"
+        :style="`background-image: url(${book.cover});`"
+      />
 
       <div class="detail-container">
         <div class="product-detail">
           <div class="title">{{ book.title }}</div>
-          <div class="price">{{ priceText }}</div>
+          <div class="price">{{ getThaiBahtText(book.price) }}</div>
+          <div v-if="thisBookInCart" class="already-in-cart">
+            You already have this book
+            <span class="bold">(x{{ thisBookInCart.quantity }})</span>
+            in your cart.
+          </div>
         </div>
         <div class="quantity-input-container">
           <BaseInputQuantity
@@ -26,7 +32,7 @@
         :disabled="quantity <= 0"
         @click="addItemToCart"
         buttonClass="primary"
-        >Add to cart</BaseButton
+        >Add {{ moreBookText }} to cart</BaseButton
       >
       <BaseButton @click="$emit('close')">Cancel</BaseButton>
     </div>
@@ -34,8 +40,8 @@
 </template>
 
 <script lang="ts">
-import { mapActions } from 'vuex'
-import { ActionType } from '@/store/modules/cart'
+import { mapActions, mapGetters } from 'vuex'
+import { ActionType, GetterType } from '@/store/modules/cart'
 import { getThaiBahtText } from '@/utils'
 
 export default {
@@ -51,12 +57,19 @@ export default {
     }
   },
   computed: {
-    priceText() {
-      return getThaiBahtText(this.book.price)
+    ...mapGetters('cart', [GetterType.getBooksInCartById]),
+    thisBookInCart() {
+      return this.getBooksInCartById(this.book.id)
+    },
+    moreBookText() {
+      return this.thisBookInCart
+        ? `${this.quantity} more book${this.quantity > 1 ? 's' : ''}`
+        : ''
     },
   },
   methods: {
     ...mapActions('cart', [ActionType.addToCart]),
+    getThaiBahtText,
     addItemToCart() {
       if (this.quantity > 0) {
         this.addToCart({ bookId: this.book.id, quantity: this.quantity })
@@ -86,11 +99,15 @@ export default {
       flex: 1;
       display: flex;
       justify-content: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 220px;
     }
 
     .detail-container {
       flex: 1;
-      padding: 10px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -108,6 +125,15 @@ export default {
       .quantity-input-container {
         align-self: center;
         bottom: 0;
+      }
+
+      .already-in-cart {
+        margin: 4px 0px;
+        background-color: #fffbf4;
+        font-size: 0.8em;
+        padding: 4px;
+        border: 1px solid #eee;
+        border-radius: 2px;
       }
     }
   }

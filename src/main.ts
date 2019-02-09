@@ -6,7 +6,13 @@ import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 import Vuelidate from 'vuelidate'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCoffee,
+  faShoppingCart,
+  faBook,
+  faTrash,
+  faTimesCircle,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.use(Vuelidate)
@@ -26,7 +32,7 @@ requireComponent.keys().forEach(fileName => {
   Vue.component(componentName, componentConfig.default || componentConfig)
 })
 
-const Icons = [faCoffee, faShoppingCart]
+const Icons = [faCoffee, faShoppingCart, faBook, faTrash, faTimesCircle]
 Icons.forEach(icon => {
   library.add(icon)
 })

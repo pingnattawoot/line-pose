@@ -4,7 +4,7 @@
     <div slot="body" class="before-checkout-modal__body">
       <div class="total-price-text">
         Total price is
-        <span class="total-price">{{ netPriceText }}</span>
+        <span class="total-price">{{ getThaiBahtText(netPrice) }}</span>
       </div>
       <div>Please receive the cash from customer</div>
       <div class="cash-input-container">
@@ -56,17 +56,15 @@ export default {
   },
   computed: {
     ...mapGetters('cart', [GetterType.netPrice]),
-    netPriceText() {
-      return getThaiBahtText(this.netPrice)
-    },
   },
   methods: {
+    getThaiBahtText,
     ...mapActions('cash', [ActionType.setCash]),
     goToPrintReceipt() {
       this.$v.$touch()
       if (!this.$v.$invalid) {
         this.setCash(this.cashAmount)
-        this.$router.push({ name: 'receipt' })
+        this.$router.replace({ name: 'receipt' })
       }
     },
   },

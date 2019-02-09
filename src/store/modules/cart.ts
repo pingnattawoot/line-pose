@@ -81,6 +81,7 @@ export const GetterType = {
   subTotalPrice: 'subTotalPrice',
   discountAmount: 'discountAmount',
   netPrice: 'netPrice',
+  getBooksInCartById: 'getBooksInCartById',
 }
 
 const getters = {
@@ -100,6 +101,9 @@ const getters = {
     return (
       getters[GetterType.subTotalPrice] - getters[GetterType.discountAmount]
     )
+  },
+  [GetterType.getBooksInCartById]: (state: State) => id => {
+    return state.cart.find(item => item.bookId === id)
   },
 }
 

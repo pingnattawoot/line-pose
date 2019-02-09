@@ -18,9 +18,11 @@
         @decrease="addQuantity(-1)"
       />
     </div>
-    <div class="table-cell center">{{ totalPriceText }}</div>
+    <div class="table-cell center bold">{{ totalPriceText }}</div>
     <div class="table-cell center">
-      <button @click="askAndRemove()">Delete</button>
+      <button class="remove-item center" @click="askAndRemove()">
+        <BaseIcon name="trash" />
+      </button>
     </div>
   </div>
 </template>
@@ -118,6 +120,22 @@ export default {
         flex: 0 0 auto;
         background-size: contain;
         background-repeat: no-repeat;
+      }
+    }
+
+    >, button.remove-item {
+      display: inline-flex;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: #666;
+
+      &:hover {
+        color: #555;
+      }
+
+      &:active {
+        color: #444;
       }
     }
   }

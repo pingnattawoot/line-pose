@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <h2 class="header">Shopping Cart</h2>
+  <div class="root-page">
     <div class="cart-container" v-if="cart.length > 0">
+      <h2 class="header">Shopping Cart</h2>
       <div class="table cart-table">
         <div class="table-header">
           <div class="table-row">
@@ -18,7 +18,7 @@
       </div>
       <CartFooter />
     </div>
-    <div v-else>Show Empty State</div>
+    <CartEmptyState v-else />
   </div>
 </template>
 
@@ -28,11 +28,13 @@ import { mapState, mapGetters } from 'vuex'
 import { GetterType } from '@/store/modules/cart'
 import CartItem from '@/components/CartItem.vue'
 import CartFooter from '@/components/CartFooter.vue'
+import CartEmptyState from '@/components/CartEmptyState.vue'
 
 export default {
   components: {
     CartItem,
     CartFooter,
+    CartEmptyState,
   },
   computed: {
     ...mapState('cart', ['cart']),
@@ -42,16 +44,21 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.header {
-  text-align: center;
+.root-page {
+  height: 100%;
 }
 
 .cart-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding-bottom: 180px;
+  padding-bottom: 120px;
 
   .cart-table {
+    width: 100%;
+    padding: 0 10%;
+    box-sizing: border-box;
+
     .table-header {
       background: #444;
       color: #fff;

@@ -1,20 +1,27 @@
 <template>
-  <div class="book-list-container">
-    <BaseInput v-model="seachingText" placeholder="Search books" />
-    <ul class="book-list">
-      <li
-        v-for="book in filteredBooks"
-        :key="book.id"
-        @click="selectBook(book, $event)"
-      >
-        <BookCard :book="book"></BookCard>
-      </li>
-    </ul>
-    <AddToCartModal
-      v-if="showBookModal"
-      :book="selectedBook"
-      @close="showBookModal = false"
-    />
+  <div>
+    <h2 class="header">Select the books and add to the cart</h2>
+    <div class="book-list-container">
+      <div class="search-book-input-container">
+        <BaseInput v-model="seachingText" placeholder="Search books" />
+      </div>
+
+      <div class="book-list">
+        <div
+          class="book-item"
+          v-for="book in filteredBooks"
+          :key="book.id"
+          @click="selectBook(book, $event)"
+        >
+          <BookCard :book="book"></BookCard>
+        </div>
+      </div>
+      <AddToCartModal
+        v-if="showBookModal"
+        :book="selectedBook"
+        @close="showBookModal = false"
+      />
+    </div>
   </div>
 </template>
 
@@ -67,9 +74,13 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 10px 0 0;
+
+  .search-book-input-container {
+    padding-bottom: 16px;
+  }
 }
 
-ul.book-list {
+.book-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -78,12 +89,8 @@ ul.book-list {
   flex-direction: row;
   flex-wrap: wrap;
 
-  >li {
-    padding: 10px;
-    margin: 10px;
-    box-shadow: 0 0 0 1px #444444;
-    border-radius: 4px;
-    width: 200px;
+  .book-item {
+    margin: 12px;
   }
 }
 </style>

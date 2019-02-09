@@ -3,21 +3,23 @@
     <div class="total-price-container">
       <div class="subtotal-text">Total price ({{ allItemQuantityText }}) :</div>
       <div v-if="discountAmount === 0">
-        <div class="net-amount">{{ netPriceText }}</div>
+        <div class="net-amount">{{ getThaiBahtText(netPrice) }}</div>
       </div>
       <div v-else class="with-discount">
         <div class="subtotal-and-discount">
-          <div class="subtotal-amount">{{ subTotalPriceText }}</div>
+          <div class="subtotal-amount">
+            {{ getThaiBahtText(subTotalPrice) }}
+          </div>
           <div class="operator minus">-</div>
           <div class="discount-amount">
-            {{ discountAmountText }}
+            {{ getThaiBahtText(discountAmount) }}
           </div>
           <div class="operator equal">=</div>
           <div class="discount-description">
             (Discount on Harry Potter book)
           </div>
         </div>
-        <div class="net-amount">{{ netPriceText }}</div>
+        <div class="net-amount">{{ getThaiBahtText(netPrice) }}</div>
       </div>
     </div>
     <div class="button-container">
@@ -59,15 +61,9 @@ export default {
         this.allItemQuantity > 1 ? 's' : ''
       }`
     },
-    subTotalPriceText() {
-      return getThaiBahtText(this.subTotalPrice)
-    },
-    discountAmountText() {
-      return getThaiBahtText(this.discountAmount)
-    },
-    netPriceText() {
-      return getThaiBahtText(this.netPrice)
-    },
+  },
+  methods: {
+    getThaiBahtText,
   },
 }
 </script>

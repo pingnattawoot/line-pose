@@ -43,16 +43,25 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
   src: url('assets/fonts/ThaiSansNeue-Regular.ttf') format('truetype');
 }
 
-body {
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   font-size: 20px;
 }
 
+h2.header {
+  text-align: center;
+}
+
 #app {
+  height: 100%;
   // font-family: 'Sukhumvit Set', 'Thai Sans Neue', sans-serif;
   font-family: 'Thai Sans Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #444;
 }
 
 .monospace {

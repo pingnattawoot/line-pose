@@ -31,6 +31,7 @@ export default {
   font-weight: 600;
   white-space: nowrap;
   transition: all 0.2s linear;
+  text-decoration: none;
 
   &:disabled {
     cursor: not-allowed;
