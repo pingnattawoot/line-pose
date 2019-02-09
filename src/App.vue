@@ -55,6 +55,19 @@ body {
   color: #2c3e50;
 }
 
+.monospace {
+  font-family: Lucida Console, Courier, monospace;
+  font-size: 0.7em;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.align-right {
+  text-align: right;
+}
+
 .errorMessage {
   font-size: 0.8em;
   color: red;
