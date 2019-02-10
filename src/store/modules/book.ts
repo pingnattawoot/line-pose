@@ -53,7 +53,7 @@ const actions = {
   },
 }
 
-const getters = {
+export const getters = {
   [GetterType.getBookById]: (state: State) => id =>
     state.books.find(book => book.id === id),
 }

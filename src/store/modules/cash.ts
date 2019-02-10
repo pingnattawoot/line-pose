@@ -26,13 +26,6 @@ const actions = {
   },
 }
 
-export const GetterType = {
-  allItemQuantity: 'allItemQuantity',
-  subTotalPrice: 'subTotalPrice',
-  discountAmount: 'discountAmount',
-  netPrice: 'netPrice',
-}
-
 export default {
   namespaced: true,
   state,
