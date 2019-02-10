@@ -6,11 +6,11 @@ export type CartItem = {
   quantity: number
 }
 
-type State = {
+export type State = {
   cart: CartItem[]
 }
 
-const MutationType = {
+export const MutationType = {
   ADD_NEW_BOOK_TO_CART: 'ADD_NEW_BOOK_TO_CART',
   SET_QUANTITY_OF_BOOK: 'SET_QUANTITY_OF_BOOK',
   REMOVE_BOOK_FORM_CART: 'REMOVE_BOOK_FORM_CART',
@@ -21,7 +21,7 @@ const state: State = {
   cart: [],
 }
 
-const mutations = {
+export const mutations = {
   [MutationType.ADD_NEW_BOOK_TO_CART]: (state: State, newItem: CartItem) => {
     state.cart.push(newItem)
   },
@@ -35,11 +35,11 @@ const mutations = {
       }
     })
   },
-  [MutationType.REMOVE_BOOK_FORM_CART]: (state: State, bookId: string) => {
-    state.cart = state.cart.filter(item => item.bookId !== bookId)
-  },
   [MutationType.EMPTY_CART]: (state: State) => {
     state.cart = []
+  },
+  [MutationType.REMOVE_BOOK_FORM_CART]: (state: State, id: string) => {
+    state.cart = state.cart.filter(item => item.bookId !== id)
   },
 }
 
@@ -86,7 +86,7 @@ export const GetterType = {
 
 const getters = {
   [GetterType.allItemQuantity]: (state: State) =>
-    _.sumBy(state.cart, 'quantity'),
+    state.cart.reduce((acc, item) => acc + item.quantity, 0),
   [GetterType.subTotalPrice]: (state: State, _, rootState) => {
     const books = rootState.book.books
     const items = state.cart

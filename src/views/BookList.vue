@@ -16,7 +16,7 @@
           <BookCard :book="book"></BookCard>
         </div>
       </div>
-      <SearchNotFound v-else />
+      <ResultNotFound v-else />
       <AddToCartModal
         v-if="showBookModal"
         :book="selectedBook"
@@ -35,14 +35,14 @@ import BookCard from '@/components/BookCard.vue'
 import AddToCartModal from '@/components/AddToCartModal.vue'
 import { createArrayFilterFunction } from '@/utils'
 import CartFloatingLink from '@/components/CartFloatingLink.vue'
-import SearchNotFound from '@/components/SearchNotFound.vue'
+import ResultNotFound from '@/components/ResultNotFound.vue'
 
 export default {
   components: {
     BookCard,
     AddToCartModal,
     CartFloatingLink,
-    SearchNotFound,
+    ResultNotFound,
   },
   data() {
     return {
