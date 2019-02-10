@@ -34,7 +34,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { mapGetters } from 'vuex'
 import { GetterType } from '@/store/modules/cart'
 import { getThaiBahtText } from '@/utils'

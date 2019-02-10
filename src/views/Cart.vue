@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { mapState, mapGetters } from 'vuex'
 import { GetterType } from '@/store/modules/cart'
 import CartItem from '@/components/CartItem.vue'

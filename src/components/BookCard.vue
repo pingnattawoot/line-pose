@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { getThaiBahtText } from '@/utils'
 
 export default {

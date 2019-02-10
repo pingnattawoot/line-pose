@@ -27,7 +27,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { mapActions, mapGetters } from 'vuex'
 import { ActionType } from '@/store/modules/cart'
 import { GetterType as BookGetters } from '@/store/modules/book'

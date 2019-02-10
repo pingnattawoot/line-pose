@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { mapActions, mapGetters } from 'vuex'
 import { getThaiBahtText } from '@/utils'
 import { GetterType } from '@/store/modules/book'

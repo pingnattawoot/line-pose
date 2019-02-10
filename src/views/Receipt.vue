@@ -61,7 +61,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { mapState, mapGetters, mapActions } from 'vuex'
 import { getThaiBahtText } from '@/utils'
 import { GetterType, ActionType as CartActions } from '@/store/modules/cart'

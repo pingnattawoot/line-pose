@@ -33,7 +33,7 @@
   </BaseModal>
 </template>
 
-<script>
+<script lang="ts">
 import { mapGetters, mapActions } from 'vuex'
 import { GetterType } from '@/store/modules/cart'
 import { ActionType } from '@/store/modules/cash'
