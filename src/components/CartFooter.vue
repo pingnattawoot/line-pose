@@ -10,16 +10,14 @@
           <div class="subtotal-amount">
             {{ getThaiBahtText(subTotalPrice) }}
           </div>
-          <div class="operator minus">-</div>
           <div class="discount-amount">
-            {{ getThaiBahtText(discountAmount) }}
+            - {{ getThaiBahtText(discountAmount) }}
           </div>
-          <div class="operator equal">=</div>
           <div class="discount-description">
             (Discount on Harry Potter book)
           </div>
         </div>
-        <div class="net-amount">{{ getThaiBahtText(netPrice) }}</div>
+        <div class="net-amount">= {{ getThaiBahtText(netPrice) }}</div>
       </div>
     </div>
     <div class="button-container">
@@ -95,10 +93,14 @@ export default {
 
     .subtotal-text {
       font-weight: bold;
+
+      @media (max-width: 600px) {
+        display: none;
+      }
     }
 
     .net-amount {
-      font-size: 1.8em;
+      font-size: 1.5em;
       font-weight: bold;
       color: #00b900;
       padding: 4px;
@@ -110,11 +112,19 @@ export default {
 
       .subtotal-and-discount {
         display: flex;
-        font-size: 1.2em;
+        font-size: 1em;
         font-weight: bold;
+
+        @media (max-width: 600px) {
+          flex-direction: column;
+        }
 
         .subtotal-amount {
           padding: 0 8px;
+
+          @media (max-width: 600px) {
+            text-decoration: line-through;
+          }
         }
 
         .discount-amount {
@@ -129,13 +139,13 @@ export default {
           position: absolute;
           height: 20px;
           text-align: center;
+
+          @media (max-width: 600px) {
+            display: none;
+          }
         }
 
         .operator {
-          &.minus {
-            color: red;
-          }
-
           &.equal {
             color: #00b900;
           }
@@ -146,6 +156,10 @@ export default {
 
   .button-container {
     padding: 16px 32px 16px 16px;
+
+    @media (max-width: 600px) {
+      padding: 8px;
+    }
   }
 }
 </style>

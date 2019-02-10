@@ -87,11 +87,12 @@ export default {
 .book-list-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 10px 0 0;
 
   .search-book-input-container {
     padding-bottom: 16px;
+    padding: 0 5%;
+    box-sizing: border-box;
   }
 }
 

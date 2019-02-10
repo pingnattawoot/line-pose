@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="input-container">
     <input
       v-focus
       class="base-input"
@@ -40,6 +40,11 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .base-input {
   outline: none;
   text-align: center;
@@ -51,7 +56,8 @@ export default {
   z-index: 3;
   height: 36px;
   margin: 0 auto;
-  width: 360px;
+  width: 100%;
+  max-width: 500px;
 
   &:focus {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.08);

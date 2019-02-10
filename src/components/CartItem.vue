@@ -9,7 +9,7 @@
         <div class="title">{{ book.title }}</div>
       </div>
     </div>
-    <div class="table-cell">{{ priceText }}</div>
+    <div class="table-cell unit-price">{{ priceText }}</div>
     <div class="table-cell">
       <BaseInputQuantity
         @increase="addQuantity(1)"
@@ -120,6 +120,10 @@ export default {
         flex: 0 0 auto;
         background-size: contain;
         background-repeat: no-repeat;
+
+        @media (max-width: 600px) {
+          display: none;
+        }
       }
     }
 
@@ -138,6 +142,12 @@ export default {
         color: #444;
       }
     }
+  }
+}
+
+.unit-price {
+  @media (max-width: 600px) {
+    display: none;
   }
 }
 </style>

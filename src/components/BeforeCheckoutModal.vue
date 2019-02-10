@@ -76,8 +76,8 @@ export default {
   &__body {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    text-align: center;
 
     .total-price-text {
       font-size: 1.2em;

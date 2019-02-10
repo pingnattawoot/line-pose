@@ -6,7 +6,7 @@
         <div class="table-header">
           <div class="table-row">
             <div class="table-cell">Product</div>
-            <div class="table-cell">Unit Price</div>
+            <div class="table-cell unit-price">Unit Price</div>
             <div class="table-cell">Quantity</div>
             <div class="table-cell">Total Price</div>
             <div class="table-cell">Action</div>
@@ -47,6 +47,12 @@ export default {
   height: 100%;
 }
 
+.unit-price {
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
 .cart-container {
   display: flex;
   flex-direction: column;
@@ -55,8 +61,12 @@ export default {
 
   .cart-table {
     width: 100%;
-    padding: 0 10%;
+    padding: 0 5%;
     box-sizing: border-box;
+
+    @media (max-width: 600px) {
+      padding: 0;
+    }
 
     .table-header {
       background: #444;
