@@ -1,8 +1,8 @@
 <template>
   <div id="nav" class="nav">
     <router-link to="/" class="brand">
-      <span>Little Brown</span>
       <div class="brand-icon" />
+      <span>Little Brown</span>
     </router-link>
     <router-link :to="{ name: 'cart' }" class="cart">
       <BaseIcon
@@ -46,7 +46,6 @@ $nav-background-color = #00b900;
     text-decoration: none;
 
     .brand-icon {
-      // font-size: 0.8em;
       background-image: url('https://stickershop.line-scdn.net/sticonshop/v1/sticon/5ac309f0031a6752fb806d8d/iphone/001.png');
       width: 1em;
       height: 1em;
