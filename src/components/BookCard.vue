@@ -1,7 +1,10 @@
 <template>
   <div class="book-card">
-    <img class="book-card__cover-image" :src="book.cover" />
-    <div class="book-card__title">{{ book.title }}</div>
+    <div
+      class="book-card__cover-image"
+      :style="`background-image: url(${book.cover});`"
+    />
+    <div class="book-card__title bold">{{ book.title }}</div>
     <div class="book-card__price">{{ getThaiBahtText(book.price) }}</div>
   </div>
 </template>
@@ -31,8 +34,15 @@ export default {
   border-radius: 4px;
   width: 200px;
 
+  &__cover-image {
+    height: 220px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
   &__title {
-    font-weight: bold;
+    margin-top: 8px;
   }
 
   &__price {

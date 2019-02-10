@@ -2,8 +2,12 @@ import axios from 'axios'
 
 const mode = process.env.NODE_ENV
 let baseURL = 'https://api.jsonbin.io'
-if (mode === 'development') {
-  // json-server (start by `yarn json-server`)
+
+if (mode === 'beta') {
+  baseURL = 'https://api.lbbs.line-beta.me'
+} else if (mode === 'development') {
+  // call for service from local json-server
+  // (start by `yarn json-server`)
   baseURL = 'http://localhost:3000'
 }
 
