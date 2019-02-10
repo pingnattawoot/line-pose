@@ -31,6 +31,9 @@ I used Firebase's hosting-service to deploy this application. Please feel free t
 
 https://little-brown-pos.firebaseapp.com/
 
+I also make the app looks good in small screen (responsive design).
+You can use your phone to access it.
+
 ---
 
 Or if you want to check the code. Please follow these steps
