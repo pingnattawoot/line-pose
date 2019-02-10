@@ -4,7 +4,7 @@
       <BaseIcon name="times-circle" />
     </div>
     <div class="text-container">
-      <div>No Result Found</div>
+      <div>No Results Found</div>
     </div>
   </div>
 </template>
