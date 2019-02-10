@@ -84,7 +84,7 @@ export default {
       GetterType.netPrice,
     ]),
     shouldShowPage() {
-      return this.cart.length > 0 && this.cash > this.netPrice
+      return this.cart.length > 0 && this.cash >= this.netPrice
     },
   },
   methods: {
