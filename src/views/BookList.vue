@@ -6,7 +6,7 @@
         <BaseInput v-model="seachingText" placeholder="Search books" />
       </div>
 
-      <div class="book-list">
+      <div v-if="filteredBooks.length > 0" class="book-list">
         <div
           class="book-item"
           v-for="book in filteredBooks"
@@ -16,6 +16,7 @@
           <BookCard :book="book"></BookCard>
         </div>
       </div>
+      <SearchNotFound v-else />
       <AddToCartModal
         v-if="showBookModal"
         :book="selectedBook"
@@ -34,12 +35,14 @@ import BookCard from '@/components/BookCard.vue'
 import AddToCartModal from '@/components/AddToCartModal.vue'
 import { createArrayFilterFunction } from '@/utils'
 import CartFloatingLink from '@/components/CartFloatingLink.vue'
+import SearchNotFound from '@/components/SearchNotFound.vue'
 
 export default {
   components: {
     BookCard,
     AddToCartModal,
     CartFloatingLink,
+    SearchNotFound,
   },
   data() {
     return {
